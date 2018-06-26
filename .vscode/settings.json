@@ -1,0 +1,8 @@
+{
+    "files.exclude": {
+        "**/*.~*": true,
+        "**/*.dcu": true,
+        "**/*.dfm": true,
+        "**/*.ddp": true
+      }
+}
