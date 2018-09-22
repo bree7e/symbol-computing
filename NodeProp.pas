@@ -23,7 +23,7 @@ type
     Label5: TLabel;
     Label6: TLabel;
     Label7: TLabel;
-    RadioGroup1: TRadioGroup;
+    RadioGroupText: TRadioGroup;
     procedure NodeBodyColorClick(Sender: TObject);
     procedure NodeBorderColorClick(Sender: TObject);
     procedure btnChangeFontClick(Sender: TObject);
@@ -120,11 +120,11 @@ end;
 procedure TNodeProperties.ListRegistredNodeClasses;
 var
   I: Integer;
-  NodeClass: TGraphNodeClass;
+//  NodeClass: TGraphNodeClass;
 begin
   for I := 0 to TSimpleGraph.NodeClassCount - 1 do
   begin
-    NodeClass := TSimpleGraph.NodeClasses(I);
+//    NodeClass := TSimpleGraph.NodeClasses(I);
 //    NodeShape.Items.AddObject(PrettyNodeClassName(NodeClass.ClassName),
 //      TObject(NodeClass));
   end;
@@ -152,7 +152,8 @@ begin
             2: Layout := tlBottom;
           end;
           Margin := UpDownMargin.Position;
-          Text := NodeText.Lines.Text;
+//          Text := NodeText.Lines.Text;
+          Text := RadioGroupText.Items[RadioGroupText.ItemIndex];
 //          Brush.Color := BodyColor.Brush.Color;
 //          Pen.Color := BorderColor.Brush.Color;
 //          Brush.Style := TBrushStyle(FillStyle.ItemIndex);
