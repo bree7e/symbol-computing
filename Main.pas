@@ -1475,6 +1475,7 @@ begin
     if cbxFontName.Text <> '' then
       Name := cbxFontName.Text;
     Size := cbxFontSize.Tag;
+    Size := 36;
     Style := FontStyle;
   end;
   if GraphObject is TGraphNode then
