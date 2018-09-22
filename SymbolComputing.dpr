@@ -18,7 +18,7 @@ uses
 
 begin
   Application.Initialize;
-  Application.Title := 'Symbolic Computing';
+  Application.Title := 'Symbolic Computing For Mechanical System';
   Application.CreateForm(TMainForm, MainForm);
   Application.CreateForm(TExportStringForm, ExportStringForm);
   Application.Run;
