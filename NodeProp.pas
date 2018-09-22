@@ -8,7 +8,6 @@ uses
 
 type
   TNodeProperties = class(TForm)
-    LabelCaption: TLabel;
     btnChangeFont: TButton;
     btnOK: TButton;
     btnCancel: TButton;
@@ -24,11 +23,7 @@ type
     Label5: TLabel;
     Label6: TLabel;
     Label7: TLabel;
-    Styles: TGroupBox;
-    FillStyle: TComboBox;
-    Label8: TLabel;
-    BorderStyle: TComboBox;
-    Label9: TLabel;
+    RadioGroup1: TRadioGroup;
     procedure NodeBodyColorClick(Sender: TObject);
     procedure NodeBorderColorClick(Sender: TObject);
     procedure btnChangeFontClick(Sender: TObject);
@@ -105,8 +100,8 @@ begin
 //        NodeShape.ItemIndex := -1;
 //      BodyColor.Brush.Color := Brush.Color;
 //      BorderColor.Brush.Color := Pen.Color;
-      FillStyle.ItemIndex := Ord(Brush.Style);
-      BorderStyle.ItemIndex := Ord(Pen.Style);
+//      FillStyle.ItemIndex := Ord(Brush.Style);
+//      BorderStyle.ItemIndex := Ord(Pen.Style);
       FontDialog.Font := Font;
       MarginRect := BackgroundMargins;
       SetObjectOptions(Options);
