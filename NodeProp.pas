@@ -12,7 +12,6 @@ type
     btnOK: TButton;
     btnCancel: TButton;
     FontDialog: TFontDialog;
-    NodeText: TMemo;
     btnApply: TButton;
     GroupBox1: TGroupBox;
     cbAlignment: TComboBox;
@@ -93,7 +92,7 @@ begin
         tlBottom: cbLayout.ItemIndex := 2;
       end;
       UpDownMargin.Position := Margin;
-      NodeText.Lines.Text := Text;
+//      NodeText.Lines.Text := Text;
 //      if Nodes.Count = 1 then
 //        NodeShape.ItemIndex := NodeShape.Items.IndexOfObject(TObject(ClassType))
 //      else
