@@ -4,7 +4,8 @@ interface
 
 uses
   Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms,
-  Dialogs, SimpleGraph, ExtCtrls, StdCtrls, ComCtrls, ExtDlgs, CheckLst;
+  Dialogs, SimpleGraph, ExtCtrls, StdCtrls, ComCtrls, ExtDlgs, CheckLst,
+  Grids;
 
 type
   TNodeProperties = class(TForm)
@@ -29,6 +30,8 @@ type
     Label8: TLabel;
     EditCoordinates: TEdit;
     Label9: TLabel;
+    GroupBoxTensor: TGroupBox;
+    StringGridTensor: TStringGrid;
     procedure NodeBodyColorClick(Sender: TObject);
     procedure NodeBorderColorClick(Sender: TObject);
     procedure btnChangeFontClick(Sender: TObject);
