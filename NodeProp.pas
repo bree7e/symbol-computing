@@ -5,7 +5,7 @@ interface
 uses
   Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms,
   Dialogs, SimpleGraph, ExtCtrls, StdCtrls, ComCtrls, ExtDlgs, CheckLst,
-  Grids;
+  Grids, SymbolComputingNode;
 
 type
   TNodeProperties = class(TForm)
@@ -145,7 +145,7 @@ begin
   S.BeginUpdate;
   try
     for I := 0 to N.Count - 1 do
-      with TGraphNode(N[I]) do
+      with TCircleBodyNode(N[I]) do
       begin
         BeginUpdate;
         try
@@ -162,10 +162,12 @@ begin
 //          Margin := UpDownMargin.Position;
 //          Text := NodeText.Lines.Text;
           Text := RadioGroupText.Items[RadioGroupText.ItemIndex];
+          mass := EditMass.Text;
 //          Brush.Color := BodyColor.Brush.Color;
 //          Pen.Color := BorderColor.Brush.Color;
 //          Brush.Style := TBrushStyle(FillStyle.ItemIndex);
 //          Pen.Style := TPenStyle(BorderStyle.ItemIndex);
+          
           Font := FontDialog.Font;
           if Backgnd = 1 then
 //            Background.LoadFromFile(OpenPictureDialog.FileName)

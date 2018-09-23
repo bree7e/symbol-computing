@@ -12,7 +12,8 @@ uses
   MarginsProp in 'MarginsProp.pas' {MarginDialog},
   AlignDlg in 'AlignDlg.pas' {AlignDialog},
   SizeDlg in 'SizeDlg.pas' {SizeDialog},
-  StringExport in 'StringExport.pas' {ExportStringForm};
+  StringExport in 'StringExport.pas' {ExportStringForm},
+  SymbolComputingNode in 'SymbolComputingNode.pas';
 
 {$R *.res}
 

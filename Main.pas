@@ -5,7 +5,8 @@ interface
 uses
   Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms,
   SimpleGraph {$IFDEF COMPILER7_UP}, XPMan {$ENDIF}, Dialogs, ExtDlgs,
-  Menus, ActnList, ImgList, StdCtrls, ComCtrls, ToolWin, JPEG, Buttons;
+  Menus, ActnList, ImgList, StdCtrls, ComCtrls, ToolWin, JPEG, Buttons,
+  SymbolComputingNode;
 
 type
   TMainForm = class(TForm)
@@ -990,7 +991,7 @@ end;
 
 procedure TMainForm.ObjectsEllipseExecute(Sender: TObject);
 begin
-  SimpleGraph.DefaultNodeClass := TEllipticNode;
+  SimpleGraph.DefaultNodeClass := TCircleBodyNode;
   SimpleGraph.CommandMode := cmInsertNode;
 end;
 
