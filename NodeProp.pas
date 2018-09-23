@@ -114,7 +114,7 @@ begin
       MarginRect := BackgroundMargins;
       SetObjectOptions(Options);
       SetNodeOptions(NodeOptions);
-      EditMass.Text := mass;
+      EditMass.Text := Mass;
     end;
     if ShowModal = mrOK then
     begin
@@ -163,7 +163,7 @@ begin
 //          Margin := UpDownMargin.Position;
 //          Text := NodeText.Lines.Text;
           Text := RadioGroupText.Items[RadioGroupText.ItemIndex];
-          mass := EditMass.Text;
+          Mass := EditMass.Text;
 //          Brush.Color := BodyColor.Brush.Color;
 //          Pen.Color := BorderColor.Brush.Color;
 //          Brush.Style := TBrushStyle(FillStyle.ItemIndex);

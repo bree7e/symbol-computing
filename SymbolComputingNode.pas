@@ -10,7 +10,14 @@ type
 
   TCircleBodyNode = class(TEllipticNode)
   public
-    mass: string;
+    Mass: string;
+    RVCenter: string;
+    RVPoint: string;
+    Speed: string;
+    AngleNumbers: string;
+    RotationAngles: string;
+    Coordinates: string;
+    Tensor: array[0..2,0..2] of string;
   end;
 
 implementation
