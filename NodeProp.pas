@@ -87,7 +87,7 @@ begin
   try
     N := Nodes;
     ListRegistredNodeClasses;
-    with TGraphNode(Nodes[0]) do
+    with TCircleBodyNode(Nodes[0]) do
     begin
       S := Owner;
 //      case Alignment of
@@ -114,6 +114,7 @@ begin
       MarginRect := BackgroundMargins;
       SetObjectOptions(Options);
       SetNodeOptions(NodeOptions);
+      EditMass.Text := mass;
     end;
     if ShowModal = mrOK then
     begin
