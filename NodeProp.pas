@@ -13,16 +13,22 @@ type
     btnCancel: TButton;
     FontDialog: TFontDialog;
     btnApply: TButton;
-    GroupBox1: TGroupBox;
-    cbAlignment: TComboBox;
     AllOptions: TCheckListBox;
-    cbLayout: TComboBox;
-    edtMargin: TEdit;
-    UpDownMargin: TUpDown;
-    Label5: TLabel;
-    Label6: TLabel;
-    Label7: TLabel;
     RadioGroupText: TRadioGroup;
+    LabelMass: TLabel;
+    EditMass: TEdit;
+    EditRVPoint: TEdit;
+    Label1: TLabel;
+    EditRVCenter: TEdit;
+    Label2: TLabel;
+    EditSpeed: TEdit;
+    Label3: TLabel;
+    EditAngleNumbers: TEdit;
+    Label4: TLabel;
+    EditAngls: TEdit;
+    Label8: TLabel;
+    EditCoordinates: TEdit;
+    Label9: TLabel;
     procedure NodeBodyColorClick(Sender: TObject);
     procedure NodeBorderColorClick(Sender: TObject);
     procedure btnChangeFontClick(Sender: TObject);
@@ -81,17 +87,17 @@ begin
     with TGraphNode(Nodes[0]) do
     begin
       S := Owner;
-      case Alignment of
-        taLeftJustify: cbAlignment.ItemIndex := 0;
-        taCenter: cbAlignment.ItemIndex := 1;
-        taRightJustify: cbAlignment.ItemIndex := 2;
-      end;
-      case Layout of
-        tlTop: cbLayout.ItemIndex := 0;
-        tlCenter: cbLayout.ItemIndex := 1;
-        tlBottom: cbLayout.ItemIndex := 2;
-      end;
-      UpDownMargin.Position := Margin;
+//      case Alignment of
+//        taLeftJustify: cbAlignment.ItemIndex := 0;
+//        taCenter: cbAlignment.ItemIndex := 1;
+//        taRightJustify: cbAlignment.ItemIndex := 2;
+//      end;
+//      case Layout of
+//        tlTop: cbLayout.ItemIndex := 0;
+//        tlCenter: cbLayout.ItemIndex := 1;
+//        tlBottom: cbLayout.ItemIndex := 2;
+//      end;
+//      UpDownMargin.Position := Margin;
 //      NodeText.Lines.Text := Text;
 //      if Nodes.Count = 1 then
 //        NodeShape.ItemIndex := NodeShape.Items.IndexOfObject(TObject(ClassType))
@@ -140,17 +146,17 @@ begin
       begin
         BeginUpdate;
         try
-          case cbAlignment.ItemIndex of
-            0: Alignment := taLeftJustify;
-            1: Alignment := taCenter;
-            2: Alignment := taRightJustify;
-          end;
-          case cbLayout.ItemIndex of
-            0: Layout := tlTop;
-            1: Layout := tlCenter;
-            2: Layout := tlBottom;
-          end;
-          Margin := UpDownMargin.Position;
+//          case cbAlignment.ItemIndex of
+//            0: Alignment := taLeftJustify;
+//            1: Alignment := taCenter;
+//            2: Alignment := taRightJustify;
+//          end;
+//          case cbLayout.ItemIndex of
+//            0: Layout := tlTop;
+//            1: Layout := tlCenter;
+//            2: Layout := tlBottom;
+//          end;
+//          Margin := UpDownMargin.Position;
 //          Text := NodeText.Lines.Text;
           Text := RadioGroupText.Items[RadioGroupText.ItemIndex];
 //          Brush.Color := BodyColor.Brush.Color;
