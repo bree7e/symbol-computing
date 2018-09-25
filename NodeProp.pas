@@ -81,6 +81,8 @@ end;
 { TNodeProperties }
 
 class function TNodeProperties.Execute(Nodes: TGraphObjectList): Boolean;
+var
+  V,W: Byte;
 begin
   Result := False;
   with Create(Application) do
@@ -121,6 +123,9 @@ begin
       EditAngleNumbers.Text := AngleNumbers;
       EditAngls.Text := RotationAngles;
       EditCoordinates.Text := Coordinates;
+      for V := 0 to 2 do
+        for W := 0 to 2 do
+          StringGridTensor.Cells[W,V] := Tensor[V,W];
     end;
     if ShowModal = mrOK then
     begin
@@ -148,6 +153,7 @@ end;
 procedure TNodeProperties.ApplyChanges;
 var
   I: Integer;
+  V,W: Byte;
 begin
   S.BeginUpdate;
   try
@@ -176,8 +182,10 @@ begin
           AngleNumbers := EditAngleNumbers.Text;
           RotationAngles := EditAngls.Text;
           Coordinates := EditCoordinates.Text;
-//          Tensor := Str
-
+          for V := 0 to 2 do begin
+            for W := 0 to 2 do
+              Tensor[W,V] := StringGridTensor.Cells[V,W];
+          end;
 
 //          Brush.Color := BodyColor.Brush.Color;
 //          Pen.Color := BorderColor.Brush.Color;
