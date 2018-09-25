@@ -117,9 +117,6 @@ type
     FormatAlignLeft: TAction;
     FormatCenter: TAction;
     FormatAlignRight: TAction;
-    ToolButton27: TToolButton;
-    ToolButton28: TToolButton;
-    ToolButton29: TToolButton;
     ExportMetafile: TAction;
     SavePictureDialog: TSavePictureDialog;
     ToolButton30: TToolButton;
@@ -134,14 +131,9 @@ type
     FormatAlignTop: TAction;
     FormatVCenter: TAction;
     FormatAlignBottom: TAction;
-    ToolButton36: TToolButton;
-    ToolButton37: TToolButton;
-    ToolButton38: TToolButton;
-    ToolButton39: TToolButton;
     ToolButton40: TToolButton;
     ViewGrid: TAction;
     ToolButton42: TToolButton;
-    ToolButton44: TToolButton;
     ToolButton45: TToolButton;
     ToolButton46: TToolButton;
     ToolButton47: TToolButton;

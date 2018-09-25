@@ -115,6 +115,12 @@ begin
       SetObjectOptions(Options);
       SetNodeOptions(NodeOptions);
       EditMass.Text := Mass;
+      EditRVCenter.Text := RVCenter;
+      EditRVPoint.Text := RVPoint;
+      EditSpeed.Text := Speed;
+      EditAngleNumbers.Text := AngleNumbers;
+      EditAngls.Text := RotationAngles;
+      EditCoordinates.Text := Coordinates;
     end;
     if ShowModal = mrOK then
     begin
@@ -164,6 +170,15 @@ begin
 //          Text := NodeText.Lines.Text;
           Text := RadioGroupText.Items[RadioGroupText.ItemIndex];
           Mass := EditMass.Text;
+          RVCenter := EditRVCenter.Text;
+          RVPoint := EditRVPoint.Text;
+          Speed := EditSpeed.Text;
+          AngleNumbers := EditAngleNumbers.Text;
+          RotationAngles := EditAngls.Text;
+          Coordinates := EditCoordinates.Text;
+//          Tensor := Str
+
+
 //          Brush.Color := BodyColor.Brush.Color;
 //          Pen.Color := BorderColor.Brush.Color;
 //          Brush.Style := TBrushStyle(FillStyle.ItemIndex);
