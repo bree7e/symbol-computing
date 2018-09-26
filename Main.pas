@@ -9,6 +9,15 @@ uses
   SymbolComputingNode, GeneralDecription;
 
 type
+
+  TGDescription = class
+    PotentialForces: Byte;
+    Direction: string;
+    AdditionalPotentialForces: string;
+    RelayFunction: string;
+    NonPotentialForces: string;
+  end;
+  
   TMainForm = class(TForm)
     SimpleGraph: TSimpleGraph;
     ToolBar: TToolBar;
@@ -359,6 +368,7 @@ type
   private
     TargetPt: TPoint;
     IsReadonly: Boolean;
+    GDescription: TGDescription;
     function IsGraphSaved: Boolean;
     procedure ShowHint(Sender: TObject);
     function ForEachCallback(GraphObject: TGraphObject; Action: Integer): Boolean;
@@ -534,6 +544,7 @@ begin
   Application.OnHint := ShowHint;
   SimpleGraphCommandModeChange(nil);
   SimpleGraphZoomChange(nil);
+  GDescription := TGDescription.Create;
   cbxFontName.Items := Screen.Fonts;
   if ParamCount > 0 then
   begin
@@ -818,7 +829,19 @@ procedure TMainForm.EditPropertiesExecute(Sender: TObject);
 var
   LinkCount: Integer;
 begin
-  GeneralDescription.ShowModal;
+  GeneralDescriptionForm.RadioGroupPotentialForces.ItemIndex := GDescription.PotentialForces;
+  GeneralDescriptionForm.EditDirection.Text := GDescription.Direction;
+  GeneralDescriptionForm.EditAdditionalPotentialForces.Text := GDescription.AdditionalPotentialForces;
+  GeneralDescriptionForm.EditRelayFunction.Text := GDescription.RelayFunction;
+  GeneralDescriptionForm.EditNonPotentialForces.Text := GDescription.NonPotentialForces;
+  if GeneralDescriptionForm.ShowModal = mrOk then
+  begin
+    GDescription.PotentialForces := GeneralDescriptionForm.RadioGroupPotentialForces.ItemIndex;
+    GDescription.Direction := GeneralDescriptionForm.EditDirection.Text;
+    GDescription.AdditionalPotentialForces := GeneralDescriptionForm.EditAdditionalPotentialForces.Text;
+    GDescription.RelayFunction := GeneralDescriptionForm.EditRelayFunction.Text;
+    GDescription.NonPotentialForces := GeneralDescriptionForm.EditNonPotentialForces.Text;
+  end;
 end;
 
 procedure TMainForm.ClipboardNativeUpdate(Sender: TObject);

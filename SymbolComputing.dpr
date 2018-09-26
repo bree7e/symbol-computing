@@ -14,7 +14,7 @@ uses
   SizeDlg in 'SizeDlg.pas' {SizeDialog},
   StringExport in 'StringExport.pas' {ExportStringForm},
   SymbolComputingNode in 'SymbolComputingNode.pas',
-  GeneralDecription in 'GeneralDecription.pas' {GeneralDescription};
+  GeneralDecription in 'GeneralDecription.pas' {GeneralDescriptionForm};
 
 {$R *.res}
 
@@ -23,6 +23,6 @@ begin
   Application.Title := 'Symbolic Computing For Mechanical System';
   Application.CreateForm(TMainForm, MainForm);
   Application.CreateForm(TExportStringForm, ExportStringForm);
-  Application.CreateForm(TGeneralDescription, GeneralDescription);
+  Application.CreateForm(TGeneralDescriptionForm, GeneralDescriptionForm);
   Application.Run;
 end.

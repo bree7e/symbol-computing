@@ -1,4 +1,4 @@
-object GeneralDescription: TGeneralDescription
+object GeneralDescriptionForm: TGeneralDescriptionForm
   Left = 970
   Top = 318
   Width = 374

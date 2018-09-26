@@ -7,16 +7,16 @@ uses
   Dialogs, StdCtrls, ExtCtrls;
 
 type
-  TGeneralDescription = class(TForm)
+  TGeneralDescriptionForm = class(TForm)
     RadioGroupPotentialForces: TRadioGroup;
-    lblMass: TLabel;
     EditDirection: TEdit;
-    lbl1: TLabel;
     EditAdditionalPotentialForces: TEdit;
-    lbl2: TLabel;
     EditRelayFunction: TEdit;
-    lbl3: TLabel;
     EditNonPotentialForces: TEdit;
+    lblMass: TLabel;
+    lbl1: TLabel;
+    lbl2: TLabel;
+    lbl3: TLabel;
     btnOK: TButton;
     btnCancel: TButton;
   private
@@ -26,7 +26,7 @@ type
   end;
 
 var
-  GeneralDescription: TGeneralDescription;
+  GeneralDescriptionForm: TGeneralDescriptionForm;
 
 implementation
 

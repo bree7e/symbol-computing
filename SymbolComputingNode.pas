@@ -2,7 +2,8 @@ unit SymbolComputingNode;
 
 interface
 
-uses SimpleGraph;
+uses
+  SimpleGraph;
 
 type
 
@@ -18,10 +19,10 @@ type
     AngleNumbers: string;
     RotationAngles: string;
     Coordinates: string;
-    Tensor: array[0..2,0..2] of string;
+    Tensor: array[0..2, 0..2] of string;
   end;
 
 implementation
 
-
 end.
+
