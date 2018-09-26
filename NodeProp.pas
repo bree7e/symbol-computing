@@ -32,6 +32,7 @@ type
     Label9: TLabel;
     GroupBoxTensor: TGroupBox;
     StringGridTensor: TStringGrid;
+    CheckBoxRoot: TCheckBox;
     procedure NodeBodyColorClick(Sender: TObject);
     procedure NodeBorderColorClick(Sender: TObject);
     procedure btnChangeFontClick(Sender: TObject);
@@ -116,6 +117,7 @@ begin
       MarginRect := BackgroundMargins;
       SetObjectOptions(Options);
       SetNodeOptions(NodeOptions);
+      CheckBoxRoot.Checked := isRoot;
       EditMass.Text := Mass;
       EditRVCenter.Text := RVCenter;
       EditRVPoint.Text := RVPoint;
@@ -175,6 +177,7 @@ begin
 //          Margin := UpDownMargin.Position;
 //          Text := NodeText.Lines.Text;
           Text := RadioGroupText.Items[RadioGroupText.ItemIndex];
+          isRoot := CheckBoxRoot.Checked;
           Mass := EditMass.Text;
           RVCenter := EditRVCenter.Text;
           RVPoint := EditRVPoint.Text;

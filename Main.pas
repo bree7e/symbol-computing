@@ -6,7 +6,7 @@ uses
   Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms,
   SimpleGraph {$IFDEF COMPILER7_UP}, XPMan {$ENDIF}, Dialogs, ExtDlgs,
   Menus, ActnList, ImgList, StdCtrls, ComCtrls, ToolWin, JPEG, Buttons,
-  SymbolComputingNode;
+  SymbolComputingNode, GeneralDecription;
 
 type
   TMainForm = class(TForm)
@@ -170,7 +170,6 @@ type
     EditInvertSelection: TAction;
     InvertSelection1: TMenuItem;
     OptionsConfirmHookLink: TAction;
-    ToolButton24: TToolButton;
     ToolButton41: TToolButton;
     ToolButton49: TToolButton;
     ObjectsHexagon: TAction;
@@ -819,18 +818,7 @@ procedure TMainForm.EditPropertiesExecute(Sender: TObject);
 var
   LinkCount: Integer;
 begin
-  if SimpleGraph.SelectedObjects.Count = 0 then
-    TDesignerProperties.Execute(SimpleGraph)
-  else
-  begin
-    LinkCount := SimpleGraph.SelectedObjectsCount(TGraphLink);
-    if LinkCount = 0 then
-      TNodeProperties.Execute(SimpleGraph.SelectedObjects)
-    else if LinkCount = SimpleGraph.SelectedObjects.Count then
-      TLinkProperties.Execute(SimpleGraph.SelectedObjects)
-    else
-      TObjectProperties.Execute(SimpleGraph.SelectedObjects);
-  end;
+  GeneralDescription.ShowModal;
 end;
 
 procedure TMainForm.ClipboardNativeUpdate(Sender: TObject);
