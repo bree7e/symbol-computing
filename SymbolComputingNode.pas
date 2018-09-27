@@ -24,5 +24,11 @@ type
 
 implementation
 
+initialization
+  TSimpleGraph.Register(TCircleBodyNode);
+
+finalization
+  TSimpleGraph.Unregister(TCircleBodyNode);
+
 end.
 

@@ -829,19 +829,36 @@ procedure TMainForm.EditPropertiesExecute(Sender: TObject);
 var
   LinkCount: Integer;
 begin
-  GeneralDescriptionForm.RadioGroupPotentialForces.ItemIndex := GDescription.PotentialForces;
-  GeneralDescriptionForm.EditDirection.Text := GDescription.Direction;
-  GeneralDescriptionForm.EditAdditionalPotentialForces.Text := GDescription.AdditionalPotentialForces;
-  GeneralDescriptionForm.EditRelayFunction.Text := GDescription.RelayFunction;
-  GeneralDescriptionForm.EditNonPotentialForces.Text := GDescription.NonPotentialForces;
-  if GeneralDescriptionForm.ShowModal = mrOk then
+
+  if SimpleGraph.SelectedObjects.Count = 0 then
   begin
-    GDescription.PotentialForces := GeneralDescriptionForm.RadioGroupPotentialForces.ItemIndex;
-    GDescription.Direction := GeneralDescriptionForm.EditDirection.Text;
-    GDescription.AdditionalPotentialForces := GeneralDescriptionForm.EditAdditionalPotentialForces.Text;
-    GDescription.RelayFunction := GeneralDescriptionForm.EditRelayFunction.Text;
-    GDescription.NonPotentialForces := GeneralDescriptionForm.EditNonPotentialForces.Text;
+    GeneralDescriptionForm.RadioGroupPotentialForces.ItemIndex := GDescription.PotentialForces;
+    GeneralDescriptionForm.EditDirection.Text := GDescription.Direction;
+    GeneralDescriptionForm.EditAdditionalPotentialForces.Text := GDescription.AdditionalPotentialForces;
+    GeneralDescriptionForm.EditRelayFunction.Text := GDescription.RelayFunction;
+    GeneralDescriptionForm.EditNonPotentialForces.Text := GDescription.NonPotentialForces;
+    if GeneralDescriptionForm.ShowModal = mrOk then
+    begin
+      GDescription.PotentialForces := GeneralDescriptionForm.RadioGroupPotentialForces.ItemIndex;
+      GDescription.Direction := GeneralDescriptionForm.EditDirection.Text;
+      GDescription.AdditionalPotentialForces := GeneralDescriptionForm.EditAdditionalPotentialForces.Text;
+      GDescription.RelayFunction := GeneralDescriptionForm.EditRelayFunction.Text;
+      GDescription.NonPotentialForces := GeneralDescriptionForm.EditNonPotentialForces.Text;
+    end;
+  end
+  else
+  begin
+    LinkCount := SimpleGraph.SelectedObjectsCount(TGraphLink);
+    if LinkCount = 0 then
+      TNodeProperties.Execute(SimpleGraph.SelectedObjects)
+    else if LinkCount = SimpleGraph.SelectedObjects.Count then
+      TLinkProperties.Execute(SimpleGraph.SelectedObjects)
+    else
+      TObjectProperties.Execute(SimpleGraph.SelectedObjects);
   end;
+
+
+
 end;
 
 procedure TMainForm.ClipboardNativeUpdate(Sender: TObject);
