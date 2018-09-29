@@ -16,7 +16,7 @@ type
   private
     { Private declarations }
   public
-    procedure SetString (AData: String);
+    procedure SetString (AData: TStrings);
   end;
 
 var
@@ -26,9 +26,9 @@ implementation
 
 {$R *.dfm}
 
-procedure TExportStringForm.SetString(AData: String);
+procedure TExportStringForm.SetString(AData: TStrings);
 begin
-  MainMemo.Lines.Text := AData;
+  MainMemo.Lines := AData;
 end ;
 
 procedure TExportStringForm.btnSaveToFileClick(Sender: TObject);

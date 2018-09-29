@@ -11,7 +11,7 @@ uses
 type
 
   TGDescription = class
-    PotentialForces: Byte;
+    PotentialForces: Byte;  // из radio группы
     Direction: string;
     AdditionalPotentialForces: string;
     RelayFunction: string;
@@ -1580,33 +1580,49 @@ end;
 procedure TMainForm.ExportStringExecute(Sender: TObject);
 var
   Sg: TSimpleGraph;
-  Link: TGraphLink;
+  Node: TCircleBodyNode;
   i: Integer;
-  Goal: String;
-  o1, o2: String;
-  First: boolean;
+  V: Byte;
+  Result: TStrings;
+  TensorRow: string;
 
 begin
   Sg :=  SimpleGraph;
-  Goal := '{';
-  First := true;
-  for i:= 0 to Sg.Objects.Count - 1 do
-  begin
-    if Sg.Objects.Items[i].IsLink then
+  Result := TStringList.Create;
+  try
+    // общая информация о системе
+    Result.Add(IntToStr(GDescription.PotentialForces));
+    Result.Add(GDescription.Direction);
+    Result.Add(GDescription.AdditionalPotentialForces);
+    Result.Add(GDescription.RelayFunction);
+    Result.Add(GDescription.NonPotentialForces);
+    for i:= 0 to Sg.Objects.Count - 1 do
     begin
-      Link := Sg.Objects.Items[i] as TGraphLink;
-      o1 :=  Link.Source.Text;
-      o2 :=  Link.Target.Text;
-      if not First then Goal := Goal + ',';
-      Goal := Goal + '{{' +o1+ ',' +o2+ '},' + Sg.Objects.Items[i].Text + '}';
-      First := false;
+      // записать общую информацию
+      if Sg.Objects.Items[i].IsNode then
+      begin
+        Node := Sg.Objects.Items[i] as TCircleBodyNode;
+        Result.Add(Node.Mass);
+        Result.Add(Node.RVCenter);
+        Result.Add(Node.RVPoint);
+        Result.Add(Node.Speed);
+        Result.Add(Node.AngleNumbers);
+        Result.Add(Node.RotationAngles);
+        Result.Add(Node.Coordinates);
+        for V := 0 to 2 do
+        begin
+          TensorRow := '{' + Node.Tensor[V][0] + ', ' + Node.Tensor[V][1] + ', ' + Node.Tensor[V][2] + '}';
+          Result.Add(TensorRow)
+        end;
+      end;
     end;
-
+    ExportStringForm.SetString(Result);
+    ExportStringForm.ShowModal;
+  finally
+    Result.free;
   end;
-  Goal := Goal + '}';
-  ExportStringForm.SetString(Goal);
-  ExportStringForm.ShowModal;
 end;
+
 
 end.
 

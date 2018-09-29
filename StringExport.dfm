@@ -34,6 +34,7 @@ object ExportStringForm: TExportStringForm
     Height = 323
     Align = alTop
     Anchors = [akLeft, akTop, akRight, akBottom]
+    BevelOuter = bvSpace
     Font.Charset = RUSSIAN_CHARSET
     Font.Color = clBlack
     Font.Height = -19
@@ -42,6 +43,7 @@ object ExportStringForm: TExportStringForm
     Lines.Strings = (
       'MainMemo')
     ParentFont = False
+    ScrollBars = ssVertical
     TabOrder = 1
   end
   object btnSaveToFile: TButton
