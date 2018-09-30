@@ -1592,6 +1592,7 @@ var
   Result: TStrings;
   TensorRow: string;
   FirstRow: string;
+  BeforeNumber: string;
 
   function NodeCount(S: TSimpleGraph): Byte;
   var
@@ -1629,6 +1630,11 @@ begin
       if Sg.Objects.Items[i].IsNode then
       begin
         Node := Sg.Objects.Items[i] as TCircleBodyNode;
+        BeforeNumber := 'Номер предыдущего тела - ';
+        if Node.LinkInputCount > 0 then
+          BeforeNumber := BeforeNumber + IntToStr(Node.ID)
+        else BeforeNumber := BeforeNumber + '0';
+        Result.Add(BeforeNumber);
         Result.Add(Node.Mass);
         Result.Add(Node.RVCenter);
         Result.Add(Node.RVPoint);

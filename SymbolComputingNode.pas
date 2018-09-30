@@ -20,9 +20,19 @@ type
     RotationAngles: string;
     Coordinates: string;
     Tensor: array[0..2, 0..2] of string;
+//    constructor Create;
+//    class function GetNodeCount: Word;
   end;
 
 implementation
+
+const
+  NodeCount: Word = 0;
+
+//function TCircleBodyNode.GetNodeCount: Word;
+//begin
+//  Result := NodeCount;
+//end;
 
 initialization
   TSimpleGraph.Register(TCircleBodyNode);
