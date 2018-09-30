@@ -1630,10 +1630,11 @@ begin
       if Sg.Objects.Items[i].IsNode then
       begin
         Node := Sg.Objects.Items[i] as TCircleBodyNode;
-        BeforeNumber := 'Номер предыдущего тела - ';
+        BeforeNumber := '№ предыдущего тела - ';
         if Node.LinkInputCount > 0 then
-          BeforeNumber := BeforeNumber + IntToStr(Node.ID)
+          BeforeNumber := BeforeNumber + IntToStr(Node.LinkInputs[0].Source.ID)
         else BeforeNumber := BeforeNumber + '0';
+        Result.Add('№ тела - ' + IntToStr(Node.ID));
         Result.Add(BeforeNumber);
         Result.Add(Node.Mass);
         Result.Add(Node.RVCenter);
