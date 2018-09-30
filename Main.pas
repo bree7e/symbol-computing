@@ -545,6 +545,11 @@ begin
   SimpleGraphCommandModeChange(nil);
   SimpleGraphZoomChange(nil);
   GDescription := TGDescription.Create;
+  GDescription.PotentialForces := 0;
+  GDescription.Direction := '-z';
+  GDescription.AdditionalPotentialForces := '0';
+  GDescription.RelayFunction := '0';
+  GDescription.NonPotentialForces := '0';
   cbxFontName.Items := Screen.Fonts;
   if ParamCount > 0 then
   begin
@@ -1581,24 +1586,46 @@ procedure TMainForm.ExportStringExecute(Sender: TObject);
 var
   Sg: TSimpleGraph;
   Node: TCircleBodyNode;
+  Count: Byte;
   i: Integer;
   V: Byte;
   Result: TStrings;
   TensorRow: string;
+  FirstRow: string;
+
+  function NodeCount(S: TSimpleGraph): Byte;
+  var
+    i: Byte;
+  begin
+    Result := 0;
+    if (S.Objects.Count = 0) then Exit; 
+    for i:= 0 to S.Objects.Count - 1 do
+    begin
+      if Sg.Objects.Items[i].IsNode then
+        Result := Result + 1;
+    end;
+  end;
 
 begin
   Sg :=  SimpleGraph;
+  Count := NodeCount(Sg);
+  FirstRow := '';
+  with GDescription do
+  begin
+    FirstRow := '{' + IntToStr(Count) + ',' +
+      IntToStr(PotentialForces) + ',' +
+      Direction + ',' +
+      AdditionalPotentialForces + ',' +
+      RelayFunction + ',' +
+      NonPotentialForces + '}';
+  end;
   Result := TStringList.Create;
   try
     // общая информация о системе
-    Result.Add(IntToStr(GDescription.PotentialForces));
-    Result.Add(GDescription.Direction);
-    Result.Add(GDescription.AdditionalPotentialForces);
-    Result.Add(GDescription.RelayFunction);
-    Result.Add(GDescription.NonPotentialForces);
+    Result.Add(FirstRow);
     for i:= 0 to Sg.Objects.Count - 1 do
     begin
-      // записать общую информацию
+      // отдельные объекты
       if Sg.Objects.Items[i].IsNode then
       begin
         Node := Sg.Objects.Items[i] as TCircleBodyNode;
