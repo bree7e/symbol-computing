@@ -15,7 +15,6 @@ type
     FontDialog: TFontDialog;
     btnApply: TButton;
     AllOptions: TCheckListBox;
-    RadioGroupText: TRadioGroup;
     LabelMass: TLabel;
     EditMass: TEdit;
     EditRVPoint: TEdit;
@@ -32,7 +31,8 @@ type
     Label9: TLabel;
     GroupBoxTensor: TGroupBox;
     StringGridTensor: TStringGrid;
-    CheckBoxRoot: TCheckBox;
+    LabelNumber: TLabel;
+    EditNumber: TEdit;
     procedure NodeBodyColorClick(Sender: TObject);
     procedure NodeBorderColorClick(Sender: TObject);
     procedure btnChangeFontClick(Sender: TObject);
@@ -113,11 +113,11 @@ begin
 //      BorderColor.Brush.Color := Pen.Color;
 //      FillStyle.ItemIndex := Ord(Brush.Style);
 //      BorderStyle.ItemIndex := Ord(Pen.Style);
+      EditNumber.Text := IntToStr(ID);
       FontDialog.Font := Font;
       MarginRect := BackgroundMargins;
       SetObjectOptions(Options);
       SetNodeOptions(NodeOptions);
-      CheckBoxRoot.Checked := isRoot;
       EditMass.Text := Mass;
       EditRVCenter.Text := RVCenter;
       EditRVPoint.Text := RVPoint;
@@ -176,8 +176,7 @@ begin
 //          end;
 //          Margin := UpDownMargin.Position;
 //          Text := NodeText.Lines.Text;
-          Text := RadioGroupText.Items[RadioGroupText.ItemIndex];
-          isRoot := CheckBoxRoot.Checked;
+          Text := IntToStr(ID);
           Mass := EditMass.Text;
           RVCenter := EditRVCenter.Text;
           RVPoint := EditRVPoint.Text;
