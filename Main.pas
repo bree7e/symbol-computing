@@ -1080,6 +1080,7 @@ end;
 
 procedure TMainForm.ObjectsLinkExecute(Sender: TObject);
 begin
+  // Выполняется в момент выбора типа графического примитива
   SimpleGraph.CommandMode := cmInsertLink;
 end;
 
@@ -1428,6 +1429,9 @@ begin
     MsgText := Format(SCanLink, [SourceName, TargetName, LinkName]);
     CanLink := (MessageDlg(MsgText, mtConfirmation, [mbYes, mbNo], 0) = mrYes);
   end;
+  Link.EndStyle := lsCircle;
+  Link.EndSize := 12;
+  Link.Brush.Color := clBlack; 
 end;
 
 procedure TMainForm.SimpleGraphCanRemoveObject(Graph: TSimpleGraph;
