@@ -1526,6 +1526,10 @@ begin
     TGraphLink(GraphObject).EndSize := 12;
     TGraphLink(GraphObject).Brush.Color := clBlack;
   end;
+  if GraphObject is TCircleBodyNode then
+  begin
+     TCircleBodyNode(GraphObject).Text := IntToStr(GraphObject.ID);
+  end;
 end;
 
 procedure TMainForm.SimpleGraphMouseMove(Sender: TObject;
