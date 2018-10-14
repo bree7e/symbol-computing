@@ -1429,9 +1429,6 @@ begin
     MsgText := Format(SCanLink, [SourceName, TargetName, LinkName]);
     CanLink := (MessageDlg(MsgText, mtConfirmation, [mbYes, mbNo], 0) = mrYes);
   end;
-  Link.EndStyle := lsCircle;
-  Link.EndSize := 12;
-  Link.Brush.Color := clBlack; 
 end;
 
 procedure TMainForm.SimpleGraphCanRemoveObject(Graph: TSimpleGraph;
@@ -1523,6 +1520,12 @@ begin
     else
       TGraphNode(GraphObject).Layout := tlCenter;
   end;
+  if GraphObject is TGraphLink then
+  begin
+    TGraphLink(GraphObject).EndStyle := lsCircle;
+    TGraphLink(GraphObject).EndSize := 12;
+    TGraphLink(GraphObject).Brush.Color := clBlack;
+  end;
 end;
 
 procedure TMainForm.SimpleGraphMouseMove(Sender: TObject;
@@ -1569,21 +1572,19 @@ end;
 procedure TMainForm.SimpleGraphObjectAfterDraw(Graph: TSimpleGraph;
   GraphObject: TGraphObject; Canvas: TCanvas);
 begin
-{
-  Canvas.Brush.Style := bsClear;
-  Canvas.Pen.Style := psSolid;
-  Canvas.Pen.Mode := pmCopy;
-  Canvas.Pen.Width := 0;
-  // Mark VisibleRect
-  Canvas.Pen.Color := clLime;
-  Canvas.Rectangle(GraphObject.VisualRect);
-  // Mark SelectedVisibleRect
-  Canvas.Pen.Color := clFuchsia;
-  Canvas.Rectangle(GraphObject.SelectedVisualRect);
-  // Mark BoundsRect
-  Canvas.Pen.Color := clBlue;
-  Canvas.Rectangle(GraphObject.BoundsRect);
-}
+//  Canvas.Brush.Style := bsClear;
+//  Canvas.Pen.Style := psSolid;
+//  Canvas.Pen.Mode := pmCopy;
+//  Canvas.Pen.Width := 0;
+//  // Mark VisibleRect
+//  Canvas.Pen.Color := clLime;
+//  Canvas.Rectangle(GraphObject.VisualRect);
+//  // Mark SelectedVisibleRect
+//  Canvas.Pen.Color := clFuchsia;
+//  Canvas.Rectangle(GraphObject.SelectedVisualRect);
+//  // Mark BoundsRect
+//  Canvas.Pen.Color := clBlue;
+//  Canvas.Rectangle(GraphObject.BoundsRect);
 end;
 
 procedure TMainForm.ExportStringExecute(Sender: TObject);
@@ -1660,6 +1661,33 @@ begin
     Result.free;
   end;
 end;
+
+//function TMainForm.SetBodyNumber(GraphObject: TGraphObject): DWORD;
+//var
+//  G: TGraphObject;
+//  Unique: Boolean;
+//  BodyNumber: DWORD;
+//  I: Integer;
+//begin
+//  if GraphObject.BodyNumber <> 0 then
+//    BodyNumber := GraphObject.BodyNumber
+//  else
+//    BodyNumber := Objects.Count + 1;
+//  repeat
+//    Unique := True;
+//    for I := Objects.Count - 1 downto 0 do
+//    begin
+//      G := Objects[I];
+//      if (G <> GraphObject) and (G.BodyNumber = BodyNumber) then
+//      begin
+//        Inc(BodyNumber);
+//        Unique := False;
+//        Break;
+//      end;
+//    end;
+//  until Unique;
+//  Result := BodyNumber;
+//end;
 
 
 end.
