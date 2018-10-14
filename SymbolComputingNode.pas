@@ -11,7 +11,7 @@ type
 
   TCircleBodyNode = class(TEllipticNode)
   public
-    isRoot: boolean;
+    OrderNumber: Byte;
     Mass: string;
     RVCenter: string;
     RVPoint: string;

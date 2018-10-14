@@ -113,7 +113,7 @@ begin
 //      BorderColor.Brush.Color := Pen.Color;
 //      FillStyle.ItemIndex := Ord(Brush.Style);
 //      BorderStyle.ItemIndex := Ord(Pen.Style);
-      EditNumber.Text := IntToStr(ID);
+      EditNumber.Text := IntToStr(OrderNumber);
       FontDialog.Font := Font;
       MarginRect := BackgroundMargins;
       SetObjectOptions(Options);
@@ -176,7 +176,7 @@ begin
 //          end;
 //          Margin := UpDownMargin.Position;
 //          Text := NodeText.Lines.Text;
-          Text := IntToStr(ID);
+          Text := IntToStr(OrderNumber);
           Mass := EditMass.Text;
           RVCenter := EditRVCenter.Text;
           RVPoint := EditRVPoint.Text;

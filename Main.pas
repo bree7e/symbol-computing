@@ -366,6 +366,7 @@ type
     procedure EditSizeExecute(Sender: TObject);
     procedure ExportStringExecute(Sender: TObject);
   private
+    NodeCount: Byte;
     TargetPt: TPoint;
     IsReadonly: Boolean;
     GDescription: TGDescription;
@@ -544,6 +545,7 @@ begin
   Application.OnHint := ShowHint;
   SimpleGraphCommandModeChange(nil);
   SimpleGraphZoomChange(nil);
+  NodeCount := 0;
   GDescription := TGDescription.Create;
   GDescription.PotentialForces := 0;
   GDescription.Direction := '-z';
@@ -1528,7 +1530,9 @@ begin
   end;
   if GraphObject is TCircleBodyNode then
   begin
-     TCircleBodyNode(GraphObject).Text := IntToStr(GraphObject.ID);
+    Inc(NodeCount);
+    TCircleBodyNode(GraphObject).OrderNumber := NodeCount;
+    TCircleBodyNode(GraphObject).Text := IntToStr(NodeCount);
   end;
 end;
 
@@ -1641,9 +1645,9 @@ begin
         Node := Sg.Objects.Items[i] as TCircleBodyNode;
         BeforeNumber := '№ предыдущего тела - ';
         if Node.LinkInputCount > 0 then
-          BeforeNumber := BeforeNumber + IntToStr(Node.LinkInputs[0].Source.ID)
+          BeforeNumber := BeforeNumber + IntToStr(TCircleBodyNode(Node.LinkInputs[0].Source).OrderNumber)
         else BeforeNumber := BeforeNumber + '0';
-        Result.Add('№ тела - ' + IntToStr(Node.ID));
+        Result.Add('№ тела - ' + IntToStr(Node.OrderNumber));
         Result.Add(BeforeNumber);
         Result.Add(Node.Mass);
         Result.Add(Node.RVCenter);
