@@ -11,17 +11,26 @@ type
 
   TCircleBodyNode = class(TEllipticNode)
   public
-    OrderNumber: Byte;
-    Mass: string;
-    RVCenter: string;
-    RVPoint: string;
-    Speed: string;
-    AngleNumbers: string;
-    RotationAngles: string;
-    Coordinates: string;
-    Tensor: array[0..2, 0..2] of string;
+    FOrderNumber: Byte;
+    FMass: string;
+    FRVCenter: string;
+    FRVPoint: string;
+    FSpeed: string;
+    FAngleNumbers: string;
+    FRotationAngles: string;
+    FCoordinates: string;
+    FTensor: array[0..2, 0..2] of string;
 //    constructor Create;
 //    class function GetNodeCount: Word;
+  published
+    property OrderNumber: Byte read FOrderNumber write FOrderNumber;
+    FMass: string;
+    FRVCenter: string;
+    FRVPoint: string;
+    FSpeed: string;
+    FAngleNumbers: string;
+    FRotationAngles: string;
+    FCoordinates: string;
   end;
 
 implementation
