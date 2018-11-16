@@ -127,7 +127,7 @@ begin
       EditCoordinates.Text := Coordinates;
       for V := 0 to 2 do
         for W := 0 to 2 do
-          StringGridTensor.Cells[W,V] := Tensor[V,W];
+          StringGridTensor.Cells[W,V] := FTensor[V,W];
     end;
     if ShowModal = mrOK then
     begin
@@ -186,7 +186,7 @@ begin
           Coordinates := EditCoordinates.Text;
           for V := 0 to 2 do begin
             for W := 0 to 2 do
-              Tensor[W,V] := StringGridTensor.Cells[V,W];
+              FTensor[W,V] := StringGridTensor.Cells[V,W];
           end;
 
 //          Brush.Color := BodyColor.Brush.Color;

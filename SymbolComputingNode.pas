@@ -24,13 +24,13 @@ type
 //    class function GetNodeCount: Word;
   published
     property OrderNumber: Byte read FOrderNumber write FOrderNumber;
-    FMass: string;
-    FRVCenter: string;
-    FRVPoint: string;
-    FSpeed: string;
-    FAngleNumbers: string;
-    FRotationAngles: string;
-    FCoordinates: string;
+    property Mass: string read FMass write FMass;
+    property RVCenter: string read FRVCenter write FRVCenter;
+    property RVPoint: string read FRVPoint write FRVPoint;
+    property Speed: string read FSpeed write FSpeed;
+    property AngleNumbers: string read FAngleNumbers write FAngleNumbers;
+    property RotationAngles: string read FRotationAngles write FRotationAngles;
+    property Coordinates: string read FCoordinates write FCoordinates;
   end;
 
 implementation

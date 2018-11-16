@@ -1658,7 +1658,7 @@ begin
         Result.Add(Node.Coordinates);
         for V := 0 to 2 do
         begin
-          TensorRow := '{' + Node.Tensor[V][0] + ', ' + Node.Tensor[V][1] + ', ' + Node.Tensor[V][2] + '}';
+          TensorRow := '{' + Node.FTensor[V][0] + ', ' + Node.FTensor[V][1] + ', ' + Node.FTensor[V][2] + '}';
           Result.Add(TensorRow)
         end;
       end;
