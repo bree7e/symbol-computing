@@ -84,36 +84,21 @@ end;
 class function TNodeProperties.Execute(Nodes: TGraphObjectList): Boolean;
 var
   V,W: Byte;
+  PrevNode: Integer;
 begin
   Result := False;
   with Create(Application) do
   try
     N := Nodes;
     ListRegistredNodeClasses;
+    Nodes[0].LinkInputCount;
     with TCircleBodyNode(Nodes[0]) do
     begin
       S := Owner;
-//      case Alignment of
-//        taLeftJustify: cbAlignment.ItemIndex := 0;
-//        taCenter: cbAlignment.ItemIndex := 1;
-//        taRightJustify: cbAlignment.ItemIndex := 2;
-//      end;
-//      case Layout of
-//        tlTop: cbLayout.ItemIndex := 0;
-//        tlCenter: cbLayout.ItemIndex := 1;
-//        tlBottom: cbLayout.ItemIndex := 2;
-//      end;
-//      UpDownMargin.Position := Margin;
-//      NodeText.Lines.Text := Text;
-//      if Nodes.Count = 1 then
-//        NodeShape.ItemIndex := NodeShape.Items.IndexOfObject(TObject(ClassType))
-//      else
-//        NodeShape.ItemIndex := -1;
-//      BodyColor.Brush.Color := Brush.Color;
-//      BorderColor.Brush.Color := Pen.Color;
-//      FillStyle.ItemIndex := Ord(Brush.Style);
-//      BorderStyle.ItemIndex := Ord(Pen.Style);
-      EditNumber.Text := IntToStr(OrderNumber);
+      PrevNode := -1;
+      if LinkInputCount > 0 then
+        PrevNode := TCircleBodyNode(LinkInputs[0].Source).OrderNumber;
+      EditNumber.Text := IntToStr(PrevNode);
       FontDialog.Font := Font;
       MarginRect := BackgroundMargins;
       SetObjectOptions(Options);
