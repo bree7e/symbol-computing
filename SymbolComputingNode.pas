@@ -6,11 +6,14 @@ uses
   SimpleGraph;
 
 type
+  TTensorArray = array[0..2, 0..2] of string;
+
+type
 
   { TCircleBodyNode }
 
   TCircleBodyNode = class(TEllipticNode)
-  public
+  private
     FOrderNumber: Byte;
     FMass: string;
     FRVCenter: string;
@@ -19,9 +22,10 @@ type
     FAngleNumbers: string;
     FRotationAngles: string;
     FCoordinates: string;
-    FTensor: array[0..2, 0..2] of string;
-//    constructor Create;
-//    class function GetNodeCount: Word;
+    procedure SetTensor(Value: TTensorArray);
+    function GetTensor(): TTensorArray;
+  public
+    FTensor: TTensorArray;
   published
     property OrderNumber: Byte read FOrderNumber write FOrderNumber;
     property Mass: string read FMass write FMass;
@@ -38,10 +42,28 @@ implementation
 const
   NodeCount: Word = 0;
 
-//function TCircleBodyNode.GetNodeCount: Word;
-//begin
-//  Result := NodeCount;
-//end;
+procedure TCircleBodyNode.SetTensor(Value: TTensorArray);
+var
+  V,W: Byte;
+  S: string;
+begin
+  S := '';
+  for V := 0 to 2 do
+    for W := 0 to 2 do
+      FTensor[V,W] := FTensor[V,W];
+end;
+
+
+function TCircleBodyNode.GetTensor: TTensorArray;
+var
+  V,W: Byte;
+  S: string;
+begin
+  S := '';
+  for V := 0 to 2 do
+    for W := 0 to 2 do
+      S := FTensor[V,W];
+end;
 
 initialization
   TSimpleGraph.Register(TCircleBodyNode);
@@ -50,4 +72,24 @@ finalization
   TSimpleGraph.Unregister(TCircleBodyNode);
 
 end.
+
+//      for V := 0 to 2 do
+//        for W := 0 to 2 do
+//          StringGridTensor.Cells[W,V] := FTensor[V,W];
+
+
+//function ArrayToString(const Data: array of string): string;
+//var
+//  SL: TStringList;
+//  S: string;
+//begin
+//  SL := TStringList.Create;
+//  try
+//    for S in Data do
+//      SL.Add(S);
+//    Result := SL.Text;
+//  finally
+//    SL.Free;
+//  end;
+//end;
 
