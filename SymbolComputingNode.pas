@@ -3,7 +3,7 @@ unit SymbolComputingNode;
 interface
 
 uses
-  SimpleGraph;
+  SimpleGraph, Classes;
 
 type
   TTensorArray = array[0..2, 0..2] of string;
@@ -22,10 +22,13 @@ type
     FAngleNumbers: string;
     FRotationAngles: string;
     FCoordinates: string;
-    procedure SetTensor(Value: TTensorArray);
-    function GetTensor(): TTensorArray;
+    procedure WriteTensor(Writer: TWriter);
+    procedure ReadTensor(Reader: TReader);
+  protected
+    procedure DefineProperties(Filer: TFiler); override;
   public
     FTensor: TTensorArray;
+//    property Tensor: TTensorArray read FTensor write FTensor;
   published
     property OrderNumber: Byte read FOrderNumber write FOrderNumber;
     property Mass: string read FMass write FMass;
@@ -42,27 +45,33 @@ implementation
 const
   NodeCount: Word = 0;
 
-procedure TCircleBodyNode.SetTensor(Value: TTensorArray);
+procedure TCircleBodyNode.DefineProperties(Filer: TFiler);
+begin
+  inherited DefineProperties(Filer);
+  Filer.DefineProperty('Tensor', ReadTensor, WriteTensor, True);
+end;
+
+procedure TCircleBodyNode.WriteTensor(Writer: TWriter);
 var
   V,W: Byte;
-  S: string;
 begin
-  S := '';
+  Writer.WriteListBegin;
   for V := 0 to 2 do
     for W := 0 to 2 do
-      FTensor[V,W] := FTensor[V,W];
+      Writer.WriteString(FTensor[V,W]);
+  Writer.WriteListEnd;
 end;
 
 
-function TCircleBodyNode.GetTensor: TTensorArray;
+procedure TCircleBodyNode.ReadTensor(Reader: TReader);
 var
   V,W: Byte;
-  S: string;
 begin
-  S := '';
+  Reader.ReadListBegin;
   for V := 0 to 2 do
     for W := 0 to 2 do
-      S := FTensor[V,W];
+      FTensor[V,W] := Reader.ReadString;
+  Reader.ReadListEnd;
 end;
 
 initialization
@@ -72,24 +81,4 @@ finalization
   TSimpleGraph.Unregister(TCircleBodyNode);
 
 end.
-
-//      for V := 0 to 2 do
-//        for W := 0 to 2 do
-//          StringGridTensor.Cells[W,V] := FTensor[V,W];
-
-
-//function ArrayToString(const Data: array of string): string;
-//var
-//  SL: TStringList;
-//  S: string;
-//begin
-//  SL := TStringList.Create;
-//  try
-//    for S in Data do
-//      SL.Add(S);
-//    Result := SL.Text;
-//  finally
-//    SL.Free;
-//  end;
-//end;
 
