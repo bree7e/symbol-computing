@@ -1647,20 +1647,23 @@ begin
         if Node.LinkInputCount > 0 then
           BeforeNumber := BeforeNumber + IntToStr(TCircleBodyNode(Node.LinkInputs[0].Source).OrderNumber)
         else BeforeNumber := BeforeNumber + '0';
-        Result.Add('' + IntToStr(Node.OrderNumber));
+        Result.Add('1');
         Result.Add(BeforeNumber);
         Result.Add(Node.Mass);
-        Result.Add(Node.RVCenter);
-        Result.Add(Node.RVPoint);
-        Result.Add(Node.Speed);
-        Result.Add(Node.AngleNumbers);
-        Result.Add(Node.RotationAngles);
-        Result.Add(Node.Coordinates);
+        Result.Add('{' + Node.RVPoint + '}');
+        Result.Add('{' + Node.RVCenter + '}');
+        Result.Add('{' + Node.Speed + '}');
+        Result.Add('{' + Node.AngleNumbers + '}');
+        Result.Add('{' + Node.RotationAngles + '}');
+        TensorRow := '{';
         for V := 0 to 2 do
         begin
-          TensorRow := '{' + Node.FTensor[V][0] + ', ' + Node.FTensor[V][1] + ', ' + Node.FTensor[V][2] + '}';
-          Result.Add(TensorRow)
+          TensorRow := TensorRow + '{' + Node.FTensor[V][0] + ', ' + Node.FTensor[V][1] + ', ' + Node.FTensor[V][2] + '}';
+          if V < 2 then TensorRow := TensorRow + ', ';
         end;
+        TensorRow := TensorRow + '}';
+        Result.Add(TensorRow);
+        Result.Add('{' + Node.Coordinates + '}');
       end;
     end;
     ExportStringForm.SetString(Result);
