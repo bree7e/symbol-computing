@@ -866,6 +866,7 @@ begin
       GDescription.AdditionalPotentialForces := GeneralDescriptionForm.EditAdditionalPotentialForces.Text;
       GDescription.RelayFunction := GeneralDescriptionForm.EditRelayFunction.Text;
       GDescription.NonPotentialForces := GeneralDescriptionForm.EditNonPotentialForces.Text;
+      SimpleGraph.Modified := True;
     end;
   end
   else

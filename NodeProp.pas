@@ -189,6 +189,7 @@ begin
           BackgroundMargins := MarginRect;
           Options := GetObjectOptions;
           NodeOptions := GetNodeOptions;
+          S.Modified := True;
         finally
           EndUpdate;
         end;
