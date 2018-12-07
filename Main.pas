@@ -1490,6 +1490,7 @@ end;
 procedure TMainForm.SimpleGraphObjectInitInstance(Graph: TSimpleGraph;
   GraphObject: TGraphObject);
 var
+  V,W: Byte;
   FontStyle: TFontStyles;
 begin
   FontStyle := [];
@@ -1533,6 +1534,9 @@ begin
     Inc(NodeCount);
     TCircleBodyNode(GraphObject).OrderNumber := NodeCount;
     TCircleBodyNode(GraphObject).Text := IntToStr(NodeCount);
+    for V := 0 to 2 do
+      for W := 0 to 2 do
+        TCircleBodyNode(GraphObject).FTensor[V,W] := '0';
   end;
 end;
 
