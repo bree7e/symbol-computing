@@ -98,6 +98,8 @@ begin
       PrevNode := -1;
       if LinkInputCount > 0 then
         PrevNode := TCircleBodyNode(LinkInputs[0].Source).OrderNumber;
+      if (LinkInputCount = 0) and (LinkOutputCount > 0) then
+        PrevNode := 0;
       EditNumber.Text := IntToStr(PrevNode);
       FontDialog.Font := Font;
       MarginRect := BackgroundMargins;
