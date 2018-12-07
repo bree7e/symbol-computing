@@ -371,6 +371,7 @@ type
     IsReadonly: Boolean;
     GDescription: TGDescription;
     function IsGraphSaved: Boolean;
+    function GetNodeCount(S: TSimpleGraph): Byte;
     procedure ShowHint(Sender: TObject);
     function ForEachCallback(GraphObject: TGraphObject; Action: Integer): Boolean;
   end;
@@ -535,6 +536,19 @@ begin
     end;
 end;
 
+function TMainForm.GetNodeCount(S: TSimpleGraph): Byte;
+var
+  i: Byte;
+begin
+  Result := 0;
+  if (S.Objects.Count = 0) then Exit;
+  for i:= 0 to S.Objects.Count - 1 do
+  begin
+    if S.Objects.Items[i].IsNode then
+      Result := Result + 1;
+  end;
+end;
+
 procedure TMainForm.ShowHint(Sender: TObject);
 begin
   StatusBar.Panels[StatusBar.Panels.Count - 1].Text := Application.Hint;
@@ -547,7 +561,7 @@ begin
   SimpleGraphZoomChange(nil);
   NodeCount := 0;
   GDescription := TGDescription.Create;
-  GDescription.PotentialForces := 0;
+  GDescription.PotentialForces := 1;
   GDescription.Direction := '-z';
   GDescription.AdditionalPotentialForces := '0';
   GDescription.RelayFunction := '0';
@@ -580,6 +594,7 @@ begin
   if IsGraphSaved and OpenDialog.Execute then
   begin
     SimpleGraph.LoadFromFile(OpenDialog.FileName);
+    NodeCount := GetNodeCount(SimpleGraph);
     SimpleGraph.Zoom := 100;
     IsReadonly := ofReadonly in OpenDialog.Options;
     if IsReadonly then
@@ -1531,6 +1546,7 @@ begin
   end;
   if GraphObject is TCircleBodyNode then
   begin
+    NodeCount := GetNodeCount(SimpleGraph);
     Inc(NodeCount);
     TCircleBodyNode(GraphObject).OrderNumber := NodeCount;
     TCircleBodyNode(GraphObject).Text := IntToStr(NodeCount);
@@ -1610,23 +1626,9 @@ var
   TensorRow: string;
   FirstRow: string;
   BeforeNumber: string;
-
-  function NodeCount(S: TSimpleGraph): Byte;
-  var
-    i: Byte;
-  begin
-    Result := 0;
-    if (S.Objects.Count = 0) then Exit; 
-    for i:= 0 to S.Objects.Count - 1 do
-    begin
-      if Sg.Objects.Items[i].IsNode then
-        Result := Result + 1;
-    end;
-  end;
-
 begin
   Sg :=  SimpleGraph;
-  Count := NodeCount(Sg);
+  Count := GetNodeCount(Sg);
   FirstRow := '';
   with GDescription do
   begin
