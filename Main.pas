@@ -388,20 +388,20 @@ uses
   About, AlignDlg, SizeDlg, StringExport;
 
 resourcestring
-  SSaveChanges   = 'Граф изменён, желает сохранить изменения?';
-  SViewOnly      = 'Только просмотр';
-  SEditing       = 'Редактирование';
-  SPan           = 'Обзор';
-  SInsertingLink = 'Вставка Link/Line';
-  SInsertingNode = 'Вставка Node';
-  SModified      = 'Модифицирован';
-  SUntitled      = 'Без названия';
-  SMultiSelect   = 'Выбрано: %d';
+  SSaveChanges   = 'Graph has been changed, would you like to save changes?';
+  SViewOnly      = 'View Only';
+  SEditing       = 'Editing';
+  SPan           = 'Pan Mode';
+  SInsertingLink = 'Inserting Link/Line';
+  SInsertingNode = 'Inserting Node';
+  SModified      = 'Modified';
+  SUntitled      = 'Untitled';
+  SMultiSelect   = '%d objects selected';
   SNumOfPoints   = '%d point(s)';
   SStartPoint    = 'startpoint';
   SEndPoint      = 'endpoint';
   SNoName        = 'NONAME';
-  SCanDelete     = 'Вы действительно хотите удалить ''%s''?';
+  SCanDelete     = 'Are you sure to delete ''%s''?';
   SCanHook       = 'Are you sure to hook %s of ''%s'' link to ''%s'' object?';
   SCanLink       = 'Are you sure to connect ''%s'' and ''%s'' objects using ''%s'' link?';
   SHooked        = 'Hooked';
