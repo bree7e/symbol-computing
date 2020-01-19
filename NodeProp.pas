@@ -9,7 +9,6 @@ uses
 
 type
   TNodeProperties = class(TForm)
-    btnChangeFont: TButton;
     btnOK: TButton;
     btnCancel: TButton;
     FontDialog: TFontDialog;
@@ -33,6 +32,7 @@ type
     StringGridTensor: TStringGrid;
     LabelNumber: TLabel;
     EditNumber: TEdit;
+    btnChangeFont: TButton;
     procedure NodeBodyColorClick(Sender: TObject);
     procedure NodeBorderColorClick(Sender: TObject);
     procedure btnChangeFontClick(Sender: TObject);
