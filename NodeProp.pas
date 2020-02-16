@@ -100,6 +100,7 @@ begin
         PrevNode := TCircleBodyNode(LinkInputs[0].Source).OrderNumber;
       if (LinkInputCount = 0) and (LinkOutputCount > 0) then
         PrevNode := 0;
+      Caption := 'Body description (' + IntToStr(OrderNumber) + ')';
       EditNumber.Text := IntToStr(PrevNode);
       FontDialog.Font := Font;
       MarginRect := BackgroundMargins;
